@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Anti Phishing</title>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="assets/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.validate.js"></script>
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+
+<script>
+$( document ).ready(function() {
+					
+	
+$('body').imagesLoaded()
+  .always( function( instance ) {
+  //  console.log('all images loaded');
+  })
+  .done( function( instance ) {
+   // console.log('all images successfully loaded');
+	$(".loader").fadeOut();
+	
+  })
+  .fail( function() {
+    console.log('all images loaded, at least one is broken');
+  })
+  .progress( function( instance, image ) {
+    var result = image.isLoaded ? 'loaded' : 'broken';
+  //  console.log( 'image is ' + result + ' for ' + image.img.src );
+  });
+  })
+</script>
+<script type="text/javascript" >
+	//reset counter;
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+	     localStorage.setItem("User_auth","N");
+	     localStorage.setItem("Game_result","F");
+localStorage.setItem("counter",0);
+localStorage.setItem("result",'');
+localStorage.setItem("result_sent_counter",0);	
+} else {
+  
+}</script>
+
+</head>
+
+<body>
+
+
+
+
+<div class="loader"><div class="loaderinner"></div></div>
+<img src="assets/images/bg.jpg" style="display:none"/>
+<img src="assets/images/gamebg.jpg" style="display:none"/>
+<div class="bg">
+
+<div id="waiting">
+<div class="overlay"></div>
+<div class="loaderinner1"></div>
+</div>
+
+
+<div id="wronguser">
+<div class="overlay"></div>
+<div class="popup" >
+<div class="popupcontent">Invalid ID<br />or<br />Password<br />
+<img src="assets/images/bt_ok.png" onclick="hidepopup();" class="popupbt" />
+</div>
+</div>
+</div>
+
+<div id="playeduser">
+<div class="popup" >
+<div class="popupcontent">You have already 
+played this game. 
+Your result has been 
+captured in our record.<br />
+<img src="assets/images/bt_ok.png" onclick="hidepopup();" class="popupbt" />
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="login">
+<img src="assets/images/title_login.png"  />
+<div class="loginform">
+<form id="signinForm" action="intro.html" method="post" class="form-horizontal">
+<input id="username" name="username" type="text" class="textbox " placeholder="Your ID" />
+<input id="password" name="password" type="password" class="textbox" placeholder="Password" />
+<!--<img src="assets/images/bt_submit.png"  />-->
+<button type="submit" name="signup" value="Sign up" class="btlogin"><img src="assets/images/bt_submit.png"  /> </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="assets/js/form_validation.js"></script>
+<script type="text/javascript" src="assets/js/custom.js"></script>
+</body>     
+
+
+
+</html>

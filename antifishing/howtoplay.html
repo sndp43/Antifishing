@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Anti Phishing</title>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/owl.theme.default.css" rel="stylesheet" type="text/css" />
+<script src="assets/js/jquery-3.2.0.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script type="text/javascript" >
+	//check if loged in and failed else send back to login;
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+var User_auth = localStorage.getItem("User_auth");
+var Game_result = localStorage.getItem("Game_result");
+	
+	if(User_auth != "Y"){
+		//alert();
+		window.location.href = 'index.html';
+	}
+	               
+} else {
+   
+}</script>
+<script type="text/javascript" >
+	//check if storage counter is set to 10 or less than 10 then redirect to login page;
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+var stored_counter = localStorage.getItem("counter");
+	
+	if(stored_counter>0 || (stored_counter<=10 && stored_counter>0)){
+		
+		window.location.href = 'index.html';
+	}
+	               
+} else {
+   
+}</script>
+<script type="text/javascript">
+$(function(){
+
+
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+   // Store      
+var image = new Image();
+if(localStorage.getItem("ProfilePic")==""){
+     image.src = "assets/images/nopic.png";
+}else{
+	image.src = localStorage.getItem("ProfilePic");
+}
+
+$('#ProfilePic').html(image);
+var User_display_name = localStorage.getItem("User_display_name");
+$('#User_display_name').text(User_display_name);
+
+} else {}
+});	
+
+</script>
+
+</head>
+
+<body>
+<div class="bg">
+<div class="userbg" >
+<span id="ProfilePic">
+<img src="assets/images/nopic.png"/>  
+</span>
+<br />Welcome<br />
+<span id="User_display_name"></span>
+</div>
+<div class="content">
+<div class="howtoplay">
+<div class="left owl-carousel">
+<img src="assets/images/howtoplay1.png" />
+<img src="assets/images/howtoplay2.png" />
+<img src="assets/images/howtoplay3.png" />
+</div>
+<div class="howtoplaycontent">
+<span>How to play</span>
+<p>
+Once the user moves the mouse on the bait, then there will be a url displayed. The user has to identify the legitimate / illegitimate url. If the user clicks on YES / NO and the url is correct / wrong, then he get a thumbs-up or down message respectively. There is no time limit for the game. The user can play till he/she answers these 10 questions. If the browser shuts in between the game, then he/she can come back and play the game till they are redirected to the result page.
+</p></div>
+<form  action= "game.html" method="post" name="startform" id="startform" ><button type="submit" name="signup" value="Sign up" class="btlogin btplay"><img src="assets/images/bt_play.png" /></button></form> </div>
+
+</div>
+</div>
+
+
+<script src="assets/js/prevent.js"></script>
+<script src="assets/js/custom.js"></script>
+</body>
+
+
+
+</html>

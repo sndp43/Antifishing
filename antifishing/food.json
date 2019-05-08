@@ -1,0 +1,61 @@
+{"food_questions": {
+  
+    "question1": {
+        "id": "1",
+        "url": "http://www.arnazon.com",
+        "position": "right",
+        "ans": "n"
+    }, "question2": {
+         "id": "2",
+         "url": "http://128.237.239.95/sbibank/",
+         "position": "left",
+         "ans": "n"
+    }, "question3": {
+        "id": "3",
+        "url": "http://www.citibank.net",
+        "position": "right",
+        "ans": "n"
+    },
+    "question4": {
+        "id": "4",
+        "url": "http://www3.nationalgeographic.com",
+        "position": "left",
+        "ans": "y"
+    },
+    "question5": {
+        "id": "5",
+        "url": "http://www.ebay.com",
+        "position": "right",
+        "ans": "y"
+    },
+    "question6": {
+        "id": "6",
+        "url": "https://www.online.citibank.co.in/products-services/online-services/epay.htm",
+        "position": "left",
+        "ans": "y"
+    },
+    "question7": {
+          "id": "7",
+         "url": "http://www.flipcart.com",
+         "position": "right",
+        "ans": "n"
+    },
+    "question8": {
+        "id": "8",
+        "url": "http://www.snapdeal.com",
+        "position": "left",
+        "ans": "y"
+    },
+    "question9": {
+        "id": "9",
+        "url": "http://www.hot-star.com",
+        "position": "right",
+        "ans": "n"
+    },
+    "question10": {
+        "id": "10",
+        "url": "http://www.tvvitter.com",
+        "position": "left",
+        "ans": "n"
+    }
+}}

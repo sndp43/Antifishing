@@ -1,0 +1,111 @@
+/* Tipso Bubble Styles */
+.tipso_bubble, .tipso_bubble > .tipso_arrow{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+}
+.tipso_bubble {
+    position: absolute;
+	text-align: center;
+	border-radius: 0px;
+	z-index: 9999;
+	background-color:transparent !important;
+	width:194px; height:153px;
+	
+	background-image:url(../images/tooltip.png) !important;
+	background-repeat:no-repeat !important;
+}
+.tipso_style{
+	cursor:pointer;
+}
+.tipso_title {
+	border-radius: 6px 6px 0 0;
+}
+.tipso_content {
+  	word-wrap: break-word;
+	padding: 0em;
+	color:#000;
+	width:130px;
+	margin-left:32px;
+	margin-top:40px;
+	font-size:13px; font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Tipso Bubble size classes - Similar to Foundation's syntax*/
+.tipso_bubble.tiny {
+	font-size: 0.6rem;
+}
+.tipso_bubble.small {
+	font-size: 0.8rem;
+}
+.tipso_bubble.default {
+	font-size: 1rem;
+}
+.tipso_bubble.large {
+	font-size: 1.2rem;
+	width: 100%;
+}
+
+/* Tipso Bubble Div */
+.tipso_bubble > .tipso_arrow{
+	position: absolute;
+	width: 0; height: 0;
+	border: 8px solid;
+	pointer-events: none;
+	border:none !important;
+}
+.tipso_bubble.top > .tipso_arrow {
+	background:url(../images/arrow1.png);
+	height:27px; width:31px;
+	top: 100%;
+	left: 50%;
+	
+	border:none !important;
+}
+.tipso_bubble.bottom > .tipso_arrow {
+	background:url(../images/arrow2.png);
+	height:27px; width:31px;
+	bottom: 100%;
+	left: 50%;
+	margin-left:50px !important;
+	
+}
+.tipso_bubble.left > .tipso_arrow {
+	background:url(../images/arrow2.png);
+	height:27px; width:31px;
+	top: 33%;
+	left: 100%;
+	margin-left:-22px;
+	
+	
+	
+}
+.tipso_bubble.right > .tipso_arrow {
+	background:url(../images/arrow3.png);
+	height:27px; width:31px;
+	top: 33%;
+	right: 100%;
+	margin-right:-22px;
+	
+	
+}
+
+.tipso_bubble .top_right_corner, 
+.tipso_bubble.top_right_corner {
+	background:url(../images/arrow1.png);
+}
+
+.tipso_bubble .bottom_right_corner, 
+.tipso_bubble.bottom_right_corner  {
+	background:url(../images/arrow3.png);
+}
+
+.tipso_bubble .top_left_corner, 
+.tipso_bubble.top_left_corner {
+	background:url(../images/arrow1.png);
+}
+
+.tipso_bubble .bottom_left_corner, 
+.tipso_bubble.bottom_left_corner  {
+	background:url(../images/arrow2.png);
+}

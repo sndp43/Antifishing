@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Anti Phishing</title>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+<script src="assets/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" >
+	//check if loged in and failed else send back to login;
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+var User_auth = localStorage.getItem("User_auth");
+var Game_result = localStorage.getItem("Game_result");
+	
+	if(User_auth != "Y"){
+		
+		window.location.href = 'index.html';
+	}
+	               
+} else {
+   
+}</script>
+<script type="text/javascript">
+$(function(){
+
+
+ // Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store      
+var image = new Image();
+image.src = localStorage.getItem("ProfilePic");
+$('#ProfilePic').html(image);
+var User_display_name = localStorage.getItem("User_display_name");
+$('#User_display_name').text(User_display_name);
+
+} else {}
+}); 
+
+</script>
+<script>
+	$(function(){
+
+    $.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+    if (o[this.name]) {
+      if (!o[this.name].push) {
+        o[this.name] = [o[this.name]];
+      }
+      o[this.name].push(this.value || '');
+    } else {
+      o[this.name] = this.value || '';
+    }
+  });
+  return o;
+};
+
+
+var result = JSON.parse(localStorage.getItem("result"));
+var User_Email_ID = localStorage.getItem("User_Email_ID");
+var classname;
+var Game_result = "P";
+var result_obj = {};
+var Gameresult = "Gameresult";
+var UserEmailID = "UserEmailID";
+
+result_obj[UserEmailID] = {User_Email_ID: User_Email_ID};
+
+  var count = 1;
+  $('#result_div').append('<input type="hidden" name="questions['+"User_Email_ID"+']" id="User_Email_ID" value="'+User_Email_ID+'">'); 
+		if(result.length !=10){
+			window.location.href = 'game.html';
+		}else{
+    $.each(result,function(qsn,qsndata){
+
+         // check if client has answered right
+
+         result_obj["q"+count] = {question_id: result[qsn].qid, qurl: result[qsn].qurl,user_answer: result[qsn].cli_ans,correct_answer: result[qsn].ogans};
+
+         count++;
+
+         if(result[qsn].cli_ans == result[qsn].ogans){
+            classname = "right";
+         }else{
+          classname = "wrong";
+          Game_result = "F";
+           $("#Game_result").val(Game_result);
+           result_obj[Gameresult] = {Game_result: Game_result};
+         }
+
+
+           $('#result_append').append('<div class='+classname+'><table border="0" cellspacing="0" cellpadding="0"><tr><td>'+result[qsn].qurl+'<input type="hidden" name="questions['+result[qsn].qid+']['+"question_id"+']" id="question_id'+result[qsn].qid+'" value="'+result[qsn].qid+'"><input type="hidden" name="questions['+result[qsn].qid+']['+"qurl"+']" id="qurl'+result[qsn].qid+'" value="'+result[qsn].qurl+'"><input type="hidden" name="questions['+result[qsn].qid+']['+"user_answer"+']" id="user_answer'+result[qsn].qid+'" value="'+result[qsn].cli_ans+'"><input type="hidden" name="questions['+result[qsn].qid+']['+"correct_answer"+']" id="correct_answer'+result[qsn].qid+'" value="'+result[qsn].ogans+'"></td></table></div>');
+
+    });
+
+
+result_obj = JSON.stringify(result_obj);
+console.log(result_obj);
+     //  call api  //
+ 
+var ResultForm = $("#ResultForm").serializeObject();
+var json_ResultForm = JSON.stringify(ResultForm);
+//console.log(json_ResultForm);
+var URL = "result.json";  //Your result api URL 
+			
+    //Hook your headers here and set it with before send function.
+$.ajaxSetup({
+    beforeSend: function(xhr) {
+        //xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        //xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa('username:passwordhere'));
+    }
+});
+		
+//check sent result count 
+		
+		var result_sent_counter = localStorage.getItem("result_sent_counter");
+		    result_sent_counter = parseInt(result_sent_counter);
+		   
+// Sends your ajax
+		if(result_sent_counter ==0){  
+			  $.ajax({
+  
+       type:"POST",
+       url:URL,
+       //contentType:"application/json; charset=utf-8",
+       //dataType:"json",
+       //data: {json_ResultForm: json_ResultForm},
+        data: {json_ResultForm: result_obj},
+       success:function(data){
+
+// responce from result api
+$.each(data,function(i,item){
+
+//alert(data[i].messege);
+	$("#thankyou").fadeIn();
+
+});
+
+},
+   complete:function(){
+	    result_sent_counter = result_sent_counter+1;
+	    localStorage.setItem("result_sent_counter",result_sent_counter);
+   }
+});
+}
+}
+     // end api//
+});
+	
+
+</script>
+<script>
+	function hidepopup(){
+	
+	$("#thankyou").fadeOut();
+	
+}
+</script>
+<script type="text/javascript">
+$(function(){
+
+
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+   // Store      
+var image = new Image();
+if(localStorage.getItem("ProfilePic")==""){
+     image.src = "assets/images/nopic.png";
+}else{
+  image.src = localStorage.getItem("ProfilePic");
+}
+
+$('#ProfilePic').html(image);
+var User_display_name = localStorage.getItem("User_display_name");
+$('#User_display_name').text(User_display_name);
+
+} else {}
+}); 
+
+</script>
+</head>
+
+<body>
+
+<div id="thankyou">
+<div class="overlay"></div>
+<div class="popup" >
+<div class="popupcontent warning">Thanks for participating into the contest. We have successfully captured your entry in our record. Winners will be announced post contest!<br />
+<img src="assets/images/bt_ok.png" onclick="hidepopup();" class="popupbt" />
+</div>
+</div>
+</div>
+
+<div class="bg">
+<div class="userbg" >
+<span id="ProfilePic">
+</span>
+<br />Welcome<br />
+<span id="User_display_name"></span>
+</div>
+<form id="ResultForm" action="post.php" method="POST" name="result">
+<input type="hidden" id="Game_result" name="questions[Game_result]" value="P">
+<div class="content" id="result_div">
+
+<div class="result" id="result_append">
+<img src="assets/images/title_result.png" />
+</div>
+
+</div>
+</form>
+</div>
+
+
+<script src="assets/js/prevent.js"></script>
+<!--<script src="assets/js/custom.js"></script>-->
+</body>
+
+
+
+</html>
